@@ -360,7 +360,7 @@ export default function Home() {
                   <Card className="overflow-hidden">
                     <div className="relative h-[200px] w-full overflow-hidden">
                       <Image
-                        src="/agv.jpg?height=400&width=600"
+                        src="/AGV.jpg?height=400&width=600"
                         alt="Automated Assembly System"
                         fill
                         className="object-cover transition-transform hover:scale-105"
