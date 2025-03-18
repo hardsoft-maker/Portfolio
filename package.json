@@ -6,7 +6,7 @@
     "dev": "next dev",
     "start": "next start",
     "lint": "next lint",
-    "build": "Next.js build --output public"
+    "build": "next build --output public"
  
   },
   "dependencies": {
