@@ -31,7 +31,7 @@ export default function ContactForm() {
     }
 
     try {
-      const response = await fetch("https://portfolio-6fab.vercel.app", {
+      const response = await fetch("https://portfolio-6fab-gi3ec9pff-hardsoft-makers-projects.vercel.app/api/send-message", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
