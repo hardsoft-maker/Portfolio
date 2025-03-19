@@ -46,7 +46,7 @@ export default function ContactForm() {
       setSuccess(true);
       setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (err) {
-      setError("Something went wrong. Please try again.");
+      setError("Somethiing went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
