@@ -1,5 +1,5 @@
 "use client";
-
+'use server';
 import { useState } from "react";
 
 export default function ContactForm() {
