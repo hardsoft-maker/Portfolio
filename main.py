@@ -14,7 +14,7 @@ app = FastAPI()
 # ✅ Allow CORS (Frontend can talk to backend)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://portfolio-6fab.vercel.app"],  # ⚠️ Use ["http://localhost:3000"] in production
+    allow_origins=["*"],  # ⚠️ Use ["http://localhost:3000"] in production
     allow_credentials=True,
     allow_methods=["*"],  # Allow all methods (GET, POST, OPTIONS, etc.)
     allow_headers=["*"],  # Allow all headers

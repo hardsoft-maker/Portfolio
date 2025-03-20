@@ -1,5 +1,4 @@
 "use client";
-'use server';
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
@@ -193,7 +192,7 @@ export default function Home() {
               </div>
               <div className="relative h-[400px] w-full overflow-hidden rounded-xl bg-muted">
                 <Image
-                  src="/yinyangprize.jpg?height=800&width=800"
+                  src="/force_sensor.jpg?height=800&width=800"
                   alt="Working on a project"
                   fill
                   className="object-cover"
@@ -419,7 +418,7 @@ export default function Home() {
                     </CardContent>
                     <CardFooter>
                       <Button variant="outline" size="sm" className="w-full" asChild>
-                        <Link href="#" className="flex items-center gap-1">
+                        <Link href="https://github.com/hardsoft-maker/Wind-Tunnel" className="flex items-center gap-1">
                           <ExternalLink className="h-4 w-4" />
                           View Project
                         </Link>
@@ -485,7 +484,7 @@ export default function Home() {
                     </CardContent>
                     <CardFooter>
                       <Button variant="outline" size="sm" className="w-full" asChild>
-                        <Link href="#" className="flex items-center gap-1">
+                        <Link href="https://grabcad.com/library/tank-with-attached-drone-quadcopter-1" className="flex items-center gap-1">
                           <ExternalLink className="h-4 w-4" />
                           View Project
                         </Link>
@@ -548,7 +547,7 @@ export default function Home() {
                     </CardContent>
                     <CardFooter>
                       <Button variant="outline" size="sm" className="w-full" asChild>
-                        <Link href="#" className="flex items-center gap-1">
+                        <Link href="https://grabcad.com/library/drone-protective-frame-1" className="flex items-center gap-1">
                           <ExternalLink className="h-4 w-4" />
                           View Project
                         </Link>
@@ -581,7 +580,7 @@ export default function Home() {
                     </CardContent>
                     <CardFooter>
                       <Button variant="outline" size="sm" className="w-full" asChild>
-                        <Link href="#" className="flex items-center gap-1">
+                        <Link href="https://github.com/hardsoft-maker/TalkTuahTaxer" className="flex items-center gap-1">
                           <ExternalLink className="h-4 w-4" />
                           View Project
                         </Link>
@@ -676,7 +675,7 @@ export default function Home() {
                     </CardContent>
                     <CardFooter>
                       <Button variant="outline" size="sm" className="w-full" asChild>
-                        <Link href="https://github.com/Bidrift/asl-alphabet-recongnition/" className="flex items-center gap-1">
+                        <Link href="https://github.com/hardsoft-maker/asl-alphabet-recongnition" className="flex items-center gap-1">
                           <ExternalLink className="h-4 w-4" />
                           View Project
                         </Link>
@@ -719,7 +718,7 @@ export default function Home() {
                   <Card className="overflow-hidden">
                     <div className="relative h-[200px] w-full overflow-hidden">
                       <Image
-                        src="/6Dof_arm.jpg?height=400&width=600"
+                        src="/Dofarm.jpg?height=400&width=600"
                         alt="Automated Farming Robot"
                         fill
                         className="object-cover transition-transform hover:scale-105"
@@ -909,7 +908,7 @@ export default function Home() {
                   </div>
                   <h3 className="text-lg font-bold mb-2">The chain</h3>
                   <p className="text-sm text-muted-foreground mb-4">
-                    built a robot transports objects to their shelves depending on colors.
+                    built a robot that transports objects to their shelves depending on colors.
                   </p>
                   <div className="flex flex-wrap gap-2">
                     <Badge>First Place</Badge>

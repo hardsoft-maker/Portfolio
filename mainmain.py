@@ -23,5 +23,5 @@ class Message(BaseModel):
 @app.post("/api/send-message")
 async def send_message(msg: Message):
     # Simulate sending email (Replace with real logic)
-    print(f"Message received: {msg}")
+    #print(f"Message received: {msg}")
     return {"status": "Message sent successfully"}
