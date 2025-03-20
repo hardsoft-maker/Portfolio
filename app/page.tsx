@@ -106,11 +106,11 @@ export default function Home() {
                   </Button>
                 </div>
                 <div className="flex gap-4 mt-4">
-                  <Link href="#" className="text-muted-foreground hover:text-primary">
+                  <Link href="https://github.com/hardsoft-maker" className="text-muted-foreground hover:text-primary">
                     <Github className="h-6 w-6" />
                     <span className="sr-only">GitHub</span>
                   </Link>
-                  <Link href="#" className="text-muted-foreground hover:text-primary">
+                  <Link href="https://www.linkedin.com/in/ahmed-abid-53b090203/" className="text-muted-foreground hover:text-primary">
                     <Linkedin className="h-6 w-6" />
                     <span className="sr-only">LinkedIn</span>
                   </Link>
