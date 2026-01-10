@@ -89,7 +89,7 @@ export default function Home() {
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                    Robotics Engineer & 11xHackathon prize winner
+                    Robotics Engineer & 12xHackathon prize winner
                   </h1>
                   <p className="max-w-[600px] text-muted-foreground md:text-xl">
                     Turning complex engineering challenges into innovative solutions with creativity and technical
@@ -101,8 +101,8 @@ export default function Home() {
                     <Link href="#projects">View My Work</Link>
                   </Button>
                   <Button variant="outline" size="lg" onClick={downloadResume}>
-                      <Download className="h-4 w-4" />
-                      Download Resume
+                    <Download className="h-4 w-4" />
+                    Download Resume
                   </Button>
                 </div>
                 <div className="flex gap-4 mt-4">
@@ -371,7 +371,7 @@ export default function Home() {
                     </CardHeader>
                     <CardContent>
                       <p className="text-sm text-muted-foreground">
-                      Led Mechanics and electronics team from Innopolis university to build an AGV using Lidar, Depth camera and other sensors to transport a max payload of 100kg.
+                        Led Mechanics and electronics team from Innopolis university to build an AGV using Lidar, Depth camera and other sensors to transport a max payload of 100kg.
                       </p>
                       <div className="mt-4 flex flex-wrap gap-2">
                         <Badge variant="secondary">SolidWorks</Badge>
@@ -406,14 +406,14 @@ export default function Home() {
                     </CardHeader>
                     <CardContent>
                       <p className="text-sm text-muted-foreground">
-                      Designed a functional 20cm*20cm test section sized wind tunnel according to industry standards for fun.
+                        Designed a functional 20cm*20cm test section sized wind tunnel according to industry standards for fun.
                       </p>
                       <div className="mt-4 flex flex-wrap gap-2">
                         <Badge variant="secondary">Solidworks</Badge>
                         <Badge variant="secondary">FEA</Badge>
                         <Badge variant="secondary">Simulation</Badge>
                         <Badge variant="secondary">Aerodynamics</Badge>
-                        
+
                       </div>
                     </CardContent>
                     <CardFooter>
@@ -453,7 +453,7 @@ export default function Home() {
                       </div>
                     </CardContent>
                     <CardFooter>
-                      
+
                     </CardFooter>
                   </Card>
 
@@ -472,7 +472,7 @@ export default function Home() {
                     </CardHeader>
                     <CardContent>
                       <p className="text-sm text-muted-foreground">
-                      Designed an all-terrain tank and a quadcopter which is able to transport small quadcopters for hard to reach destination.
+                        Designed an all-terrain tank and a quadcopter which is able to transport small quadcopters for hard to reach destination.
                       </p>
                       <div className="mt-4 flex flex-wrap gap-2">
                         <Badge variant="secondary">Aerodynamics</Badge>
@@ -542,7 +542,7 @@ export default function Home() {
                         <Badge variant="secondary">Aerodynamics</Badge>
                         <Badge variant="secondary">Simulation</Badge>
                         <Badge variant="secondary">Prototyping</Badge>
-                        
+
                       </div>
                     </CardContent>
                     <CardFooter>
@@ -788,7 +788,7 @@ export default function Home() {
                   </div>
                   <h3 className="text-lg font-bold mb-2">TalkTuahTaxer</h3>
                   <p className="text-sm text-muted-foreground mb-4">
-                  Built a gen Z financial advisor which uses conversational AI to assist users with their spendings on Amazon. I wrote about it in the projects section hehe.
+                    Built a gen Z financial advisor which uses conversational AI to assist users with their spendings on Amazon. I wrote about it in the projects section hehe.
                   </p>
                   <div className="flex flex-wrap gap-2">
                     <Badge>6 Prizes</Badge>
