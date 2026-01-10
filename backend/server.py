@@ -128,6 +128,42 @@ async def get_status_checks():
     
     return status_checks
 
+# Chat endpoint
+@api_router.post("/chat", response_model=ChatResponse)
+async def chat_with_assistant(request: ChatRequest):
+    try:
+        # Get API key
+        api_key = os.environ.get('EMERGENT_LLM_KEY')
+        if not api_key:
+            return ChatResponse(response="Sorry, the chat service is not configured. Please contact Ahmed directly.")
+        
+        # Create unique session ID based on timestamp
+        session_id = f"chat-{uuid.uuid4()}"
+        
+        # Initialize chat with context about Ahmed
+        chat = LlmChat(
+            api_key=api_key,
+            session_id=session_id,
+            system_message=AHMED_CONTEXT
+        ).with_model("openai", "gpt-4o")
+        
+        # Add history to the chat
+        for msg in request.history:
+            if msg.role == "user":
+                user_msg = UserMessage(text=msg.content)
+                await chat.send_message(user_msg)
+            # Assistant messages are already in history, we rebuild context
+        
+        # Send the current message
+        user_message = UserMessage(text=request.message)
+        response = await chat.send_message(user_message)
+        
+        return ChatResponse(response=response)
+        
+    except Exception as e:
+        logger.error(f"Chat error: {str(e)}")
+        return ChatResponse(response="I'm having trouble connecting right now. Please try again or contact Ahmed directly via email.")
+
 # Include the router in the main app
 app.include_router(api_router)
 
