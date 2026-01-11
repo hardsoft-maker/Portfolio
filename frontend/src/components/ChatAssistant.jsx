@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Loader2 } from 'lucide-react';
-import { personalInfo } from '../data/mock';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+// Use environment variable or empty string for same-origin requests (production)
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || '';
 
 const ChatAssistant = () => {
   const [isOpen, setIsOpen] = useState(false);
