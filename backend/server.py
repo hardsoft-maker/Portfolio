@@ -9,16 +9,23 @@ from pydantic import BaseModel, Field, ConfigDict
 from typing import List, Optional
 import uuid
 from datetime import datetime, timezone
-from emergentintegrations.llm.chat import LlmChat, UserMessage
+import google.generativeai as genai
 
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
-# MongoDB connection
-mongo_url = os.environ['MONGO_URL']
+# MongoDB connection - with fallback for local development
+mongo_url = os.environ.get('MONGO_URL', 'mongodb://localhost:27017')
+db_name = os.environ.get('DB_NAME', 'ahmed_portfolio')
+
 client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ['DB_NAME']]
+db = client[db_name]
+
+# Configure Google Gemini
+GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY')
+if GEMINI_API_KEY:
+    genai.configure(api_key=GEMINI_API_KEY)
 
 # Create the main app without a prefix
 app = FastAPI()
@@ -29,7 +36,7 @@ api_router = APIRouter(prefix="/api")
 
 # Define Models
 class StatusCheck(BaseModel):
-    model_config = ConfigDict(extra="ignore")  # Ignore MongoDB's _id field
+    model_config = ConfigDict(extra="ignore")
     
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     client_name: str
@@ -99,6 +106,13 @@ CONTACT:
 
 Be friendly, helpful, and concise. Answer questions about Ahmed's background, skills, projects, and experience. If asked about something not in the context, politely say you don't have that information and suggest contacting Ahmed directly."""
 
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
 async def root():
@@ -109,7 +123,6 @@ async def create_status_check(input: StatusCheckCreate):
     status_dict = input.model_dump()
     status_obj = StatusCheck(**status_dict)
     
-    # Convert to dict and serialize datetime to ISO string for MongoDB
     doc = status_obj.model_dump()
     doc['timestamp'] = doc['timestamp'].isoformat()
     
@@ -118,47 +131,48 @@ async def create_status_check(input: StatusCheckCreate):
 
 @api_router.get("/status", response_model=List[StatusCheck])
 async def get_status_checks():
-    # Exclude MongoDB's _id field from the query results
     status_checks = await db.status_checks.find({}, {"_id": 0}).to_list(1000)
     
-    # Convert ISO string timestamps back to datetime objects
     for check in status_checks:
         if isinstance(check['timestamp'], str):
             check['timestamp'] = datetime.fromisoformat(check['timestamp'])
     
     return status_checks
 
-# Chat endpoint
+# Chat endpoint using Google Gemini
 @api_router.post("/chat", response_model=ChatResponse)
 async def chat_with_assistant(request: ChatRequest):
     try:
-        # Get API key
-        api_key = os.environ.get('EMERGENT_LLM_KEY')
-        if not api_key:
+        if not GEMINI_API_KEY:
             return ChatResponse(response="Sorry, the chat service is not configured. Please contact Ahmed directly.")
         
-        # Create unique session ID based on timestamp
-        session_id = f"chat-{uuid.uuid4()}"
+        # Initialize Gemini model
+        model = genai.GenerativeModel(
+            model_name='gemini-2.0-flash',
+            system_instruction=AHMED_CONTEXT
+        )
         
-        # Initialize chat with context about Ahmed
-        chat = LlmChat(
-            api_key=api_key,
-            session_id=session_id,
-            system_message=AHMED_CONTEXT
-        ).with_model("openai", "gpt-4o")
-        
-        # Add history to the chat
+        # Build conversation history for Gemini
+        chat_history = []
         for msg in request.history:
-            if msg.role == "user":
-                user_msg = UserMessage(text=msg.content)
-                await chat.send_message(user_msg)
-            # Assistant messages are already in history, we rebuild context
+            if msg.role == "assistant":
+                chat_history.append({
+                    "role": "model",
+                    "parts": [msg.content]
+                })
+            else:
+                chat_history.append({
+                    "role": "user",
+                    "parts": [msg.content]
+                })
+        
+        # Start chat with history
+        chat = model.start_chat(history=chat_history)
         
         # Send the current message
-        user_message = UserMessage(text=request.message)
-        response = await chat.send_message(user_message)
+        response = chat.send_message(request.message)
         
-        return ChatResponse(response=response)
+        return ChatResponse(response=response.text)
         
     except Exception as e:
         logger.error(f"Chat error: {str(e)}")
@@ -174,13 +188,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger(__name__)
 
 @app.on_event("shutdown")
 async def shutdown_db_client():
