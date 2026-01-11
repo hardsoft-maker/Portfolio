@@ -171,7 +171,7 @@ async def chat_with_assistant(request: ChatRequest):
         
         # Generate response with system instruction
         response = gemini_client.models.generate_content(
-            model="gemini-2.0-flash",
+            model="gemini-1.5-flash",
             contents=contents,
             config=types.GenerateContentConfig(
                 system_instruction=AHMED_CONTEXT,
