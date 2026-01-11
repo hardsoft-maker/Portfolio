@@ -9,7 +9,8 @@ from pydantic import BaseModel, Field, ConfigDict
 from typing import List, Optional
 import uuid
 from datetime import datetime, timezone
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 
 
 ROOT_DIR = Path(__file__).parent
@@ -24,8 +25,9 @@ db = client[db_name]
 
 # Configure Google Gemini
 GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY')
+gemini_client = None
 if GEMINI_API_KEY:
-    genai.configure(api_key=GEMINI_API_KEY)
+    gemini_client = genai.Client(api_key=GEMINI_API_KEY)
 
 # Create the main app without a prefix
 app = FastAPI()
@@ -139,38 +141,44 @@ async def get_status_checks():
     
     return status_checks
 
-# Chat endpoint using Google Gemini
+# Chat endpoint using Google Gemini (new google-genai library)
 @api_router.post("/chat", response_model=ChatResponse)
 async def chat_with_assistant(request: ChatRequest):
     try:
-        if not GEMINI_API_KEY:
+        if not gemini_client:
             return ChatResponse(response="Sorry, the chat service is not configured. Please contact Ahmed directly.")
         
-        # Initialize Gemini model
-        model = genai.GenerativeModel(
-            model_name='gemini-2.0-flash',
-            system_instruction=AHMED_CONTEXT
+        # Build conversation history for Gemini
+        contents = []
+        
+        # Add history
+        for msg in request.history:
+            role = "model" if msg.role == "assistant" else "user"
+            contents.append(
+                types.Content(
+                    role=role,
+                    parts=[types.Part.from_text(text=msg.content)]
+                )
+            )
+        
+        # Add current message
+        contents.append(
+            types.Content(
+                role="user",
+                parts=[types.Part.from_text(text=request.message)]
+            )
         )
         
-        # Build conversation history for Gemini
-        chat_history = []
-        for msg in request.history:
-            if msg.role == "assistant":
-                chat_history.append({
-                    "role": "model",
-                    "parts": [msg.content]
-                })
-            else:
-                chat_history.append({
-                    "role": "user",
-                    "parts": [msg.content]
-                })
-        
-        # Start chat with history
-        chat = model.start_chat(history=chat_history)
-        
-        # Send the current message
-        response = chat.send_message(request.message)
+        # Generate response with system instruction
+        response = gemini_client.models.generate_content(
+            model="gemini-2.0-flash",
+            contents=contents,
+            config=types.GenerateContentConfig(
+                system_instruction=AHMED_CONTEXT,
+                temperature=0.7,
+                max_output_tokens=1024
+            )
+        )
         
         return ChatResponse(response=response.text)
         
