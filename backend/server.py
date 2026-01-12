@@ -14,7 +14,7 @@ from google.genai import types
 
 
 ROOT_DIR = Path(__file__).parent
-load_dotenv(ROOT_DIR / '.env')
+load_dotenv(ROOT_DIR.parent / '.env')
 
 # MongoDB connection - with fallback for local development
 mongo_url = os.environ.get('MONGO_URL', 'mongodb://localhost:27017')
@@ -25,7 +25,6 @@ db = client[db_name]
 
 # Configure Google Gemini
 GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY')
-gemini_client = None
 if GEMINI_API_KEY:
     gemini_client = genai.Client(api_key=GEMINI_API_KEY)
 
@@ -145,9 +144,6 @@ async def get_status_checks():
 @api_router.post("/chat", response_model=ChatResponse)
 async def chat_with_assistant(request: ChatRequest):
     try:
-        if not gemini_client:
-            return ChatResponse(response="Sorry, the chat service is not configured. Please contact Ahmed directly.")
-        
         # Build conversation history for Gemini
         contents = []
         
@@ -171,7 +167,7 @@ async def chat_with_assistant(request: ChatRequest):
         
         # Generate response with system instruction
         response = gemini_client.models.generate_content(
-            model="gemini-2.0-flash",
+            model="gemini-2.5-flash",
             contents=contents,
             config=types.GenerateContentConfig(
                 system_instruction=AHMED_CONTEXT,
