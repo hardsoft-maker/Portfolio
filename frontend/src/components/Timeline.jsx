@@ -29,7 +29,7 @@ const TimelineItem = ({ event }) => {
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="underline underline-offset-2 decoration-[#1A1A1A]/40 hover:decoration-[#1A1A1A] transition-all duration-200"
+            className="underline underline-offset-2 decoration-[#1A1A1A]/40 hover:decoration-[#1A1A1A] transition-all duration-200 font-extrabold"
           >
             {link.text}
           </a>
@@ -51,20 +51,18 @@ const TimelineItem = ({ event }) => {
   return (
     <div className="grid grid-cols-[100px_1fr] gap-8 py-4 group">
       {/* Date */}
-      <span 
-        className={`text-sm tracking-wide ${
-          event.isFuture ? 'text-[#9CA3AF]' : 'text-[#6B7280]'
-        }`}
+      <span
+        className={`text-sm tracking-wide ${event.isFuture ? 'text-[#9CA3AF]' : 'text-[#6B7280]'
+          }`}
         style={{ fontFamily: "'JetBrains Mono', monospace" }}
       >
         {event.date}
       </span>
 
       {/* Description */}
-      <p 
-        className={`text-base leading-relaxed ${
-          event.isFuture ? 'text-[#9CA3AF] italic' : 'text-[#1A1A1A]'
-        }`}
+      <p
+        className={`text-base leading-relaxed ${event.isFuture ? 'text-[#9CA3AF] italic' : 'text-[#1A1A1A]'
+          }`}
         style={{ fontFamily: "'Inter', sans-serif" }}
       >
         {renderDescription()}
