@@ -13,8 +13,8 @@ from google import genai
 from google.genai import types
 
 
-ROOT_DIR = Path(__file__).parent
-load_dotenv(ROOT_DIR.parent / '.env')
+ROOT_DIR = Path(__file__)
+load_dotenv(ROOT_DIR / '.env')
 
 # MongoDB connection - with fallback for local development
 mongo_url = os.environ.get('MONGO_URL', 'mongodb://localhost:27017')
