@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-const EssayPage = ({ title }) => {
+const EssayPage = ({ title, content }) => {
     return (
         <div className="min-h-screen bg-[#FAFAFA] text-[#1A1A1A] font-inter">
             <Header />
@@ -13,8 +13,12 @@ const EssayPage = ({ title }) => {
                         {title}
                     </h1>
 
-                    <div className="prose-p:font-light prose-p:leading-relaxed text-[#404040]">
-                        <p>HERE GOES NTHG</p>
+                    <div className="space-y-6">
+                        {content.split('\n\n').map((paragraph, index) => (
+                            <p key={index} className="font-light leading-relaxed text-[#404040] tracking-tight">
+                                {paragraph}
+                            </p>
+                        ))}
                     </div>
                 </div>
             </main>
