@@ -202,17 +202,7 @@ export const essays = [
 export const essayContent = {
   philanthropy: {
     title: "philanthropy",
-    content: `I've always believed that the impact we make isn't measured by the scale of our actions, but by the intention behind them.
-
-Throughout my journey, I've had the privilege to work on projects that went beyond just building things—they were about solving real problems for real people. Whether it was teaching 60+ students as a tutor at my university, or building accessible technology that others could learn from, the goal was always the same: to leave things a little better than I found them.
-
-Philanthropy, to me, isn't just about grand gestures. It's about the small moments—sharing knowledge, helping a friend debug their code at 2 AM, open-sourcing projects so others can build on them. It's about recognizing that we're all in this together, and that our success is intertwined with the success of those around us.
-
-In robotics and engineering, we often talk about efficiency and optimization. But what about optimizing for human impact? What about designing systems that empower others rather than just serve ourselves?
-
-That's the kind of work that excites me. That's the kind of legacy I want to build.
-
-Because at the end of the day, the most sophisticated algorithm or the most complex robot means nothing if it doesn't make someone's life better.`
+    content: `writing in progress...`
   },
   dabussy: {
     title: "dabussy",
@@ -230,26 +220,12 @@ And maybe that's the secret: find work that makes you forget to eat. Find proble
 
 That's where the magic happens.
 
-That's dabussy.`
+That's dabussy.
+
+On a real note, this was generated with AI and i absolutely fucking love it`
   },
   onworkinghard: {
     title: "on working hard",
-    content: `People often romanticize "working hard," but they rarely talk about what it actually means.
-
-Working hard isn't about pulling all-nighters for the sake of it. It's not about burnout culture or grinding yourself into dust. That's not productive—that's destructive.
-
-Real hard work is strategic. It's about intensity with purpose. It's about knowing when to push and when to rest. It's about being honest with yourself about what matters and what's just noise.
-
-I've built CanSat prototypes, won hackathons, led hardware teams, tutored 60+ students, and juggled multiple internships—all while studying robotics engineering. But here's what nobody tells you: the hard work isn't in doing everything. It's in choosing the right things to do.
-
-Every "yes" is a thousand "nos" to other things. Every project you commit to is time you can't spend elsewhere. The real challenge isn't working hard—it's working hard on the right things.
-
-And sometimes, the hardest work is stopping. Recognizing when you're spinning your wheels. When you're adding complexity instead of value. When you're working hard just to feel productive rather than to actually produce something meaningful.
-
-So yes, work hard. But work smart harder. Know your "why." Protect your energy. Choose battles worth fighting.
-
-Because if you're going to work hard—and you should—make sure it's building something that matters.
-
-Not just to others, but to you.`
+    content: `work in progress`
   }
 };
