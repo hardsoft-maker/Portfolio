@@ -187,7 +187,14 @@ export const timelineEvents = [
 ];
 
 export const socialLinks = [
+  { name: "ESSAYS", url: "/essays", label: "Essays" },
   { name: "GITHUB", url: "https://github.com/hardsoft-maker", label: "GitHub" },
   { name: "LINKDN", url: "https://www.linkedin.com/in/ahmed-abid-53b090203/", label: "LinkedIn" },
   { name: "EMAIL", url: "mailto:smartahmadabid@gmail.com", label: "Email" }
+];
+
+export const essays = [
+  { title: "philanthropy", slug: "/philanthropy" },
+  { title: "dabussy", slug: "/dabussy" },
+  { title: "on working hard", slug: "/onworkinghard" }
 ];
