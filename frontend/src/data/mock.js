@@ -21,28 +21,28 @@ export const personalInfo = {
 
 export const timelineEvents = [
   {
-    id: 0,
+    id: 1,
     date: "04.2026",
     description: "Builds a network simulation app, 600+ users in 8 days. Should He raise ?",
     links: [],
-    isFuture: true
-  },
-  {
-    id: 1,
-    date: "02.2026",
-    description: "Scout for an angel community",
-    links: [],
-    isFuture: true
+    isFuture: false
   },
   {
     id: 2,
-    date: "01.2026",
-    description: "Starts building an AI electronic components recommendation tool to save up on time",
+    date: "02.2026",
+    description: "Scout for an angel community",
     links: [],
-    isFuture: true
+    isFuture: false
   },
   {
     id: 3,
+    date: "01.2026",
+    description: "Starts building an AI electronic components recommendation tool to save up on time",
+    links: [],
+    isFuture: false
+  },
+  {
+    id: 4,
     date: "10.2025",
     description: "Finalist in residency Delta, 1.3M views on X and a cofounder breakup",
     links: [
@@ -50,13 +50,13 @@ export const timelineEvents = [
     ]
   },
   {
-    id: 4,
+    id: 5,
     date: "10.2025",
     description: "Joins Residency Delta online",
     links: []
   },
   {
-    id: 5,
+    id: 6,
     date: "09.2025",
     description: "Organizes a merkathon with YC startup Dex",
     links: [
@@ -64,7 +64,7 @@ export const timelineEvents = [
     ]
   },
   {
-    id: 6,
+    id: 7,
     date: "07.2025",
     description: "Builds a Mechanical keyboard with display screen and knob along with his friend Ethan Lai",
     links: [
@@ -72,7 +72,7 @@ export const timelineEvents = [
     ]
   },
   {
-    id: 7,
+    id: 8,
     date: "06.2025",
     description: "Joins as a robotics engineering intern for precast concrete manufacturing facility",
     links: [
@@ -80,7 +80,7 @@ export const timelineEvents = [
     ]
   },
   {
-    id: 8,
+    id: 9,
     date: "06.2025",
     description: "Ahmed Joins Series (The Yale startup) as a growth Intern and reaches the semi finals of the hamptons house race",
     links: [
@@ -88,19 +88,19 @@ export const timelineEvents = [
     ]
   },
   {
-    id: 9,
+    id: 10,
     date: "06.2025",
     description: "Builds a mobile app that can help him buy meals based on his budget and fitness goals",
     links: []
   },
   {
-    id: 10,
+    id: 11,
     date: "05.2025",
     description: "He becomes a researcher @ Innopolis university finding the impact of C-K theory on AI and wheather it could us get closer to AGI",
     links: []
   },
   {
-    id: 10,
+    id: 12,
     date: "04.2025",
     description: "Ahmed Builds a tool to help him find the the most optimal motor for robotic arms",
     links: [
@@ -108,7 +108,7 @@ export const timelineEvents = [
     ]
   },
   {
-    id: 11,
+    id: 13,
     date: "03.2025",
     description: "Ahmed wakes up and joins Sprint as engineering intern, founded by Audrey Chen",
     links: [
@@ -116,7 +116,7 @@ export const timelineEvents = [
     ]
   },
   {
-    id: 12,
+    id: 14,
     date: "11.2024",
     description: "Ahmed wins 7 different Tracks at the Brainrot hackathon vs 1100+ participants",
     links: [
@@ -124,7 +124,7 @@ export const timelineEvents = [
     ]
   },
   {
-    id: 13,
+    id: 15,
     date: "11.2024",
     description: "Along with his friends, he builds an ASL alphabet recognition model",
     links: [
@@ -132,7 +132,7 @@ export const timelineEvents = [
     ]
   },
   {
-    id: 14,
+    id: 16,
     date: "06.2024",
     description: "Builds a Wind Tunnel with a 20*20 test section, leading the Biggest ever project of a wind tunnel for hobbyists",
     links: [
@@ -140,7 +140,7 @@ export const timelineEvents = [
     ]
   },
   {
-    id: 15,
+    id: 17,
     date: "06.2024",
     description: "Hardware team lead of 6 engineers to build an AGV for Ozon warehouse",
     links: [
@@ -148,7 +148,7 @@ export const timelineEvents = [
     ]
   },
   {
-    id: 16,
+    id: 18,
     date: "08.2024",
     description: "Develops Stamps Recognition computer vision model",
     links: [
@@ -156,44 +156,44 @@ export const timelineEvents = [
     ]
   },
   {
-    id: 17,
+    id: 19,
     date: "2023 - 2025",
     description: "Became a tutor for 1st and 2nd year students at my university teaching over 60 students",
     links: []
   },
   {
-    id: 18,
+    id: 20,
     date: "09.2022",
     description: "Receives scholarship to study Robotics engineering at Innopolis University",
     links: []
   },
   {
-    id: 19,
+    id: 21,
     date: "03.2023",
     description: "Builds FIRST EVER CanSat prototype in Tunisia",
     links: []
   },
   {
-    id: 20,
+    id: 22,
     date: "X.2021",
     description: "Wins Actinspace hackathon and represents his country in finals",
     links: []
   },
   {
-    id: 21,
+    id: 23,
     date: "X.2021",
     description: "Builds an F450 Quadcopter and a sugar rocket which was sorta illegal.. don't tell anyone tho",
     links: []
   },
   {
-    id: 22,
+    id: 24,
     date: "2020 - 2022",
     description: "Wins Multiple university level hackathons during high school building computer vision models, maze solving robots etc... Oh also works everytime a different job during summer brake",
     links: []
   },
 
   {
-    id: 23,
+    id: 25,
     date: "X.2019",
     description: "Loses his first ever Robotics Olympiad due unfair judgement so decided to go on rampage",
     links: []
