@@ -21,23 +21,37 @@ export const personalInfo = {
 
 export const timelineEvents = [
   {
+    id: 0,
+    date: "04.2026",
+    description: "Builds a network simulation app, 600+ users in 8 days. Should He raise ?",
+    links: [],
+    isFuture: true
+  },
+  {
+    id: 1,
+    date: "02.2026",
+    description: "Scout for an angel community",
+    links: [],
+    isFuture: true
+  },
+  {
     id: 2,
-    date: "07.2025",
-    description: "More coming soon..",
+    date: "01.2026",
+    description: "Starts building an AI electronic components recommendation tool to save up on time",
     links: [],
     isFuture: true
   },
   {
     id: 3,
-    date: "26.10.2025",
-    description: "Ahmed & Miyu raised the interest of A16z by building the world's first AI Private Chef robot",
+    date: "10.2025",
+    description: "Finalist in residency Delta, 1.3M views on X and a cofounder breakup",
     links: [
       { text: "AI Private Chef", url: "https://x.com/miyuselene/status/1982517846124192011?s=20" }
     ]
   },
   {
     id: 4,
-    date: "10.10.2025",
+    date: "10.2025",
     description: "Joins Residency Delta online",
     links: []
   },
